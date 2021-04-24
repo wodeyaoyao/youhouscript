@@ -1,0 +1,10 @@
+/* bili-fade */
+.bili-fade-enter-active,
+.bili-fade-leave-active {
+	transition: opacity 0.3s;
+}
+
+.bili-fade-enter-from,
+.bili-fade-leave-to {
+	opacity: 0;
+}
