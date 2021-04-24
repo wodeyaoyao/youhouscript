@@ -1,8 +1,8 @@
 ﻿import { createApp } from "vue";
-import { getDom } from "./utils/tools";
 import App from "./App.vue";
-import installElementPlus from "./plugins/element";
 import "./global.css";
+import installElementPlus from "./plugins/element";
+import { getDom } from "./utils/tools";
 
 // 动态加载
 getDom(".user-con.signin").then((userCon) => {

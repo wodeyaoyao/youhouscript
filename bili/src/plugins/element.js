@@ -8,11 +8,11 @@ import {
 	ElRow,
 	ElScrollbar,
 	ElSkeleton,
-	ElSkeletonItem,
+	ElSkeletonItem
 } from "element-plus";
-import "element-plus/lib/theme-chalk/index.css";
 // fade/zoom 等
 import "element-plus/lib/theme-chalk/base.css";
+
 
 export default (app) => {
 	app.use(ElPopover)
