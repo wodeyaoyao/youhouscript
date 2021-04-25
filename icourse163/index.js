@@ -88,5 +88,3 @@ getDom(".u-edu-h5player-pcdisplay").then((player) => {
 		}
 	});
 });
-
-document.body.appendChild(createRateIcon());
