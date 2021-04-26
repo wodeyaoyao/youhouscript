@@ -43,36 +43,49 @@ const createRateIcon = (() => {
 	};
 })();
 
-getDom(".u-edu-h5player-pcdisplay").then((player) => {
-	// 2s不动隐藏鼠标
+// 2s不动隐藏鼠标
+const hideMouse = () => {
+	let player;
 	let cursorTimer;
-	player.addEventListener("mousemove", () => {
+
+	const hide = () => {
 		clearTimeout(cursorTimer);
 
 		player.style.cursor = "default";
 
 		cursorTimer = setTimeout(() => {
 			player.style.cursor = "none";
+			player.removeEventListener("mousemove", hide);
+			player = none;
 		}, 2000);
-	});
+	};
 
-	// 连按两次d三倍速快进，再按一次d恢复原先倍速
+	document.addEventListener("mousemove", async () => {
+		if (!player) {
+			player = await getDom(".u-edu-h5player-pcdisplay");
+			player.addEventListener("mousemove", hide);
+		}
+	});
+};
+
+// 连按两次d三倍速快进，再按一次d恢复原先倍速
+const beisu = () => {
 	let keyDownCount = 0;
-	let keyDownTimer;
 	let rate = 1;
-	let video;
+	let keyDownTimer;
+	let video, player;
+
 	document.addEventListener("keydown", async (e) => {
 		if (e.key === "d") {
 			keyDownCount++;
 
 			if (keyDownCount === 2) {
 				clearTimeout(keyDownTimer);
-                
+
+				player = await getDom(".u-edu-h5player-pcdisplay");
 				player.appendChild(createRateIcon());
 
-				if (!video) {
-					video = await getDom("video");
-				}
+				video = await getDom("video");
 
 				rate = video.playbackRate;
 				video.playbackRate = 3;
@@ -87,4 +100,7 @@ getDom(".u-edu-h5player-pcdisplay").then((player) => {
 			}
 		}
 	});
-});
+};
+
+hideMouse();
+beisu();
