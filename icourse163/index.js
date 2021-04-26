@@ -56,7 +56,7 @@ const hideMouse = () => {
 		cursorTimer = setTimeout(() => {
 			player.style.cursor = "none";
 			player.removeEventListener("mousemove", hide);
-			player = none;
+			player = null;
 		}, 2000);
 	};
 
